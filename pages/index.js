@@ -1,17 +1,20 @@
 import styled from "styled-components";
-import { Heading } from "../src/components/LayoutComponents";
-
+import Header from "../src/components/layout/header/header";
+import CatalogPage from "../src/pages/catalog-page/catalog-page";
 
 const Home = () => {
   return (
       <PageWrapper>
-        <Heading>Prague Labs testovací zadání</Heading>
+          <Header/>
+          <CatalogPage/>
       </PageWrapper>
   )
 }
 
 const PageWrapper = styled.div`
-
+  max-width: 1240px;
+  margin: 0 auto;
+  background-color: var(--color-white);
 `
 
 
