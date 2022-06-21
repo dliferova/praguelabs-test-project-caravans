@@ -24,14 +24,16 @@ const ProductCard = ({props}) => {
     return (
         <ProductCardWrapper>
             <ProductCardStyled>
-                <Image
-                    src='https://d35xwkx70uaomf.cloudfront.net/017bc56a-8387-4b2c-b044-a01a0b7ddf1b.jpg'
-                    alt='Caravan Forster A 699 HB'
-                    width="390"
-                    height="193"
-                    objectFit="cover"
-                    quality="75"
-                />
+                <div style={{borderRadius: '5px', overflow: 'hidden'}}>
+                    <Image
+                        src='https://d35xwkx70uaomf.cloudfront.net/017bc56a-8387-4b2c-b044-a01a0b7ddf1b.jpg'
+                        alt='Caravan Forster A 699 HB'
+                        width="390"
+                        height="193"
+                        objectFit="cover"
+                        quality="75"
+                    />
+                </div>
                 <ProductCardInfoWrap>
                     <ProductCardContentContainer>
                         <div>

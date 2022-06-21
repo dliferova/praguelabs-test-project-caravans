@@ -1,42 +1,62 @@
 import * as React from 'react';
 import styled from "styled-components";
 import {Box, Slider} from '@mui/material';
+import { ThemeProvider } from '@mui/material/styles';
 import {GreyTextRegular, TextSize} from "../text/text";
+import {theme} from "../../../default-styles";
 
 function valuetext(value) {
     return `${value}Kč`;
 }
 
+const minDistance = 10;
+
 const RangeSlider = () => {
     const [value, setValue] = React.useState([1200, 7600]);
 
-    const handleChange = (event, newValue) => {
-        setValue(newValue);
-    };
+    // const [startValue, setStartValue] = React.useState(1200);
+    // const [endValue, setEndValue] = React.useState(7600);
+
+    const handleChange = (event) => {
+        console.log(event.target.value);
+        setValue(event.target.value)
+    }
 
     return (
-        <Box sx={{width: 320}}>
-            <GreyTextRegular
-                as="h3"
-                size={TextSize.MEDIUM}
-                marginBottom={'16px'}
-            >Cena za den
-            </GreyTextRegular>
-            <Slider
-                getAriaLabel={() => 'Price range'}
-                min={1200}
-                max={7600}
-                value={value}
-                color="secondary"
-                onChange={handleChange}
-                valueLabelDisplay="auto"
-                getAriaValueText={valuetext}
-            />
-            <InputsWrapper>
-                <Input/>
-                <Input/>
-            </InputsWrapper>
-        </Box>
+        <PriceRangeWrapper>
+            <ThemeProvider theme={theme}>
+                <Box sx={{
+                    display: 'inline-block',
+                    maxWidth: 328,
+                    marginRight: 2,
+                }}>
+                    <GreyTextRegular
+                        as="h3"
+                        size={TextSize.MEDIUM}
+                        marginBottom={'16px'}
+                    >Cena za den
+                    </GreyTextRegular>
+                    <Slider
+                        getAriaLabel={() => 'Price range'}
+                        min={1200}
+                        max={7600}
+                        value={value}
+                        color="secondary"
+                        valueLabelDisplay="auto"
+                        getAriaValueText={valuetext}
+                        onChange={handleChange}
+                    />
+                    <InputsWrapper>
+                        <Input
+                            value={value[0]}
+                        />
+                        <Input
+                            value={value[1]}
+                        />
+                    </InputsWrapper>
+                </Box>
+            </ThemeProvider>
+        </PriceRangeWrapper>
     );
 }
 
@@ -62,19 +82,10 @@ const Input = styled.input`
   }
 `;
 
-const Label = styled.label`
-  text-align: end;
-  color: var(--color-dark-grey);
-  font-size: 16px;
-  position: absolute;
-  top: 0;
-  left: 0;
-  transform: translateX(-50%);
-`;
-
-const TitleSmall = styled.h4`
-  font-size: 16px;
-  line-height: 100%;
-  color: var(--color-dark-grey);
-  font-weight: normal;
-`;
+const PriceRangeWrapper = styled.div`
+  padding: 0 16px 0 0;
+  
+  @media (max-width: 1024px) {
+    padding: 0 16px;
+  }
+`

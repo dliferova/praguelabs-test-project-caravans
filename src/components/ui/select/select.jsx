@@ -27,7 +27,10 @@ const SelectInput = () => {
 
                 />
             </TextWithIcon>
-            <FormControl sx={{ m: 1, width: 156 }}>
+            <FormControl sx={{
+                width: 176,
+                marginTop: 2,
+            }}>
                 <Select
                     labelId="instant-reservation-label"
                     id="instant-reservation"
@@ -47,4 +50,9 @@ export default SelectInput;
 const SelectInputWrapper = styled.div`
   display: flex;
   flex-direction: column;
+  padding: 0 0 0 16px;
+  
+  @media (max-width: 1024px) {
+    padding: 0 16px;
+  }
 `;

@@ -9,6 +9,7 @@ export const ProductCardWrapper = styled.div`
   
   @media (max-width: 1024px) {
     margin: 0 auto;
+    max-width: 343px;
   }
 `;
 
@@ -19,7 +20,7 @@ export const ProductCardStyled = styled.article`
 `;
 
 export const ProductCardInfoWrap = styled.div`
-  padding: 10px 7%;
+  padding: 0 7%;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
