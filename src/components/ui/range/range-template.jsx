@@ -1,6 +1,7 @@
 import * as React from 'react';
 import styled from "styled-components";
 import {Box, Slider} from '@mui/material';
+import {GreyTextRegular, TextSize} from "../text/text";
 
 function valuetext(value) {
     return `${value}Kč`;
@@ -14,8 +15,13 @@ const RangeSlider = () => {
     };
 
     return (
-        <Box sx={{width: 328}}>
-            <TitleSmall>Okamžità rezervace</TitleSmall>
+        <Box sx={{width: 320}}>
+            <GreyTextRegular
+                as="h3"
+                size={TextSize.MEDIUM}
+                marginBottom={'16px'}
+            >Cena za den
+            </GreyTextRegular>
             <Slider
                 getAriaLabel={() => 'Price range'}
                 min={1200}

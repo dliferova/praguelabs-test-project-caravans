@@ -1,13 +1,18 @@
 import React from 'react';
 import TypeCard from "../../ui/type-card/type-card";
 import { TypesListStyled, TypesListWrapper } from "./styles";
-import { HeadingH3 } from "../../../default-styles";
 import {filters} from "../../../const";
+import {GreyTextRegular, TextSize} from "../../ui/text/text"
 
 const TypesList = () => {
     return (
         <TypesListWrapper>
-            <HeadingH3>Typ karavanu</HeadingH3>
+            <GreyTextRegular
+                as="h3"
+                size={TextSize.MEDIUM}
+                marginBottom={'16px'}
+            >Typ karavanu
+            </GreyTextRegular>
             <TypesListStyled>
                 {
                     filters.map((filter) =>

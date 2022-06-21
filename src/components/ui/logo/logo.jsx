@@ -1,19 +1,15 @@
 import React from "react";
-import styled from "styled-components";
-//import { LogoIcon } from "/src/assets/prague-labs-logo.svg";
+import Image from 'next/image';
 
-// Логотип сайта с названием
 function Logo() {
     return (
-        <StyledLogo href="/">
-
-        </StyledLogo>
+       <Image
+           src="/prague-labs-logo.svg"
+           alt="company logo"
+           width="201"
+           height="36"
+       />
     );
 }
 
 export default Logo;
-
-const StyledLogo = styled.a`
-  max-width: 201px;
-  height: 36px;
-`;

@@ -1,6 +1,8 @@
 import React from 'react';
-import {FormControl, InputLabel, Select, MenuItem} from '@mui/material';
+import {FormControl, Select, MenuItem} from '@mui/material';
 import styled from "styled-components";
+import Image from 'next/image';
+import {GreyTextRegular, TextSize, TextWithIcon} from "../text/text";
 
 const SelectInput = () => {
     const [status, setStatus] = React.useState('true');
@@ -11,7 +13,20 @@ const SelectInput = () => {
 
     return (
         <SelectInputWrapper>
-            <TitleSmall>Okamžità rezervace</TitleSmall>
+            <TextWithIcon>
+                <GreyTextRegular
+                    as="h3"
+                    size={TextSize.MEDIUM}
+                >Okamžitá rezervace
+                </GreyTextRegular>
+                <Image
+                    src='/action.svg'
+                    alt='passengers-count'
+                    width="16"
+                    height="16"
+
+                />
+            </TextWithIcon>
             <FormControl sx={{ m: 1, width: 156 }}>
                 <Select
                     labelId="instant-reservation-label"
@@ -32,11 +47,4 @@ export default SelectInput;
 const SelectInputWrapper = styled.div`
   display: flex;
   flex-direction: column;
-`;
-
-const TitleSmall = styled.h4`
-  font-size: 16px;
-  line-height: 100%;
-  color: var(--color-dark-grey);
-  font-weight: normal;
 `;

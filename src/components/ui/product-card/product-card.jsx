@@ -1,48 +1,109 @@
 import React, {memo} from 'react';
-import {ProductCardWrapper,
+import {
+    ProductCardWrapper,
     ProductCardStyled,
-    ProductCardImageWrap,
     ProductCardInfoWrap,
     ProductCardContentContainer,
-    HeadingH2,
-    TextAccent,
+    Counter,
     CardIconsGroup,
-    StyledIcon,
     PriceWrapper,
-    PriceInfo
+    GroupItem,
+    PriceInfo,
 } from "./styles";
+import {
+    Text,
+    TextSize,
+    TextBoldHeading,
+    GreyTextRegular,
+    TextAccent,
+    TextWithIcon
+} from "../text/text";
+import Image from 'next/image';
 
-
-const ProductCard = ({ props }) => {
-   //const {previewImage, price} = props;
-
+const ProductCard = ({props}) => {
     return (
         <ProductCardWrapper>
             <ProductCardStyled>
-                <ProductCardImageWrap>
-                    <a href="#">
-                        <img src="" alt="Caravan image"/>
-                    </a>
-                </ProductCardImageWrap>
+                <Image
+                    src='https://d35xwkx70uaomf.cloudfront.net/017bc56a-8387-4b2c-b044-a01a0b7ddf1b.jpg'
+                    alt='Caravan Forster A 699 HB'
+                    width="390"
+                    height="193"
+                    objectFit="cover"
+                    quality="75"
+                />
                 <ProductCardInfoWrap>
                     <ProductCardContentContainer>
                         <div>
-                            <TextAccent>Integrál</TextAccent>
-                            <HeadingH2>Forster A 699 HB</HeadingH2>
+                            <TextAccent
+                                size={TextSize.EXTRA_SMALL}
+                                marginBottom={'10px'}
+                            >Integrál
+                            </TextAccent>
+                            <TextBoldHeading
+                                as="h2"
+                                size={TextSize.BIG}
+                                fontWeight={'bold'}
+                            >Forster A 699 HB
+                            </TextBoldHeading>
                         </div>
                     </ProductCardContentContainer>
                     <ProductCardContentContainer>
                         <div className="product-card__conveniences">
-                            <p>Prachov</p>
+                            <Text
+                                marginBottom={'10px'}
+                            >Prachov
+                            </Text>
                             <CardIconsGroup>
-                                <StyledIcon/>
+                                <GroupItem>
+                                    <Image
+                                        src='/passengers-count-icon.svg'
+                                        alt='passengers-count'
+                                        width="20"
+                                        height="20"
+                                    />
+                                    <Counter>7</Counter>
+                                </GroupItem>
+                                <GroupItem>
+                                    <Image
+                                        src='/bed-icon.svg'
+                                        alt='sleep-capacity'
+                                        width="20"
+                                        height="20"
+                                    />
+                                    <Counter>4</Counter>
+                                </GroupItem>
+                                <GroupItem>
+                                    <Image
+                                        src='/wc-icon.svg'
+                                        alt='wc-info'
+                                        width="20"
+                                        height="20"
+                                    />
+                                </GroupItem>
+                                <GroupItem>
+                                    <Image
+                                        src='/shower-icon.svg'
+                                        alt='shower-info'
+                                        width="20"
+                                        height="20"
+                                    />
+                                </GroupItem>
                             </CardIconsGroup>
                         </div>
                     </ProductCardContentContainer>
                     <ProductCardContentContainer>
                         <PriceWrapper>
-                            <PriceInfo>Cena od</PriceInfo>
-                            <PriceInfo>2 750 &#75;&#269; &#47;&nbsp;den</PriceInfo>
+                            <GreyTextRegular>Cena od</GreyTextRegular>
+                            <TextWithIcon>
+                                <PriceInfo>2 750 &#75;&#269; &#47;&nbsp;den</PriceInfo>
+                                <Image
+                                    src='/action.svg'
+                                    alt='passengers-count'
+                                    width="16"
+                                    height="16"
+                                />
+                            </TextWithIcon>
                         </PriceWrapper>
                     </ProductCardContentContainer>
                 </ProductCardInfoWrap>

@@ -1,23 +1,25 @@
 import React from "react";
 import ProductCard from "../../ui/product-card/product-card";
-import {CaravansListWrapper} from "./styles";
-import Button from "../../ui/button/button";
+import {SectionContainer, CaravansListWrapper, ShowMoreButton} from "./styles";
 
 function CaravansList({}) {
     return (
-        <CaravansListWrapper>
-            <ProductCard/>
-            <ProductCard/>
-            <ProductCard/>
-            <ProductCard/>
-            <ProductCard/>
-            <ProductCard/>
-            <Button
+        <SectionContainer>
+            <CaravansListWrapper>
+                <ProductCard/>
+                <ProductCard/>
+                <ProductCard/>
+                <ProductCard/>
+                <ProductCard/>
+                <ProductCard/>
+            </CaravansListWrapper>
+
+            <ShowMoreButton
                 type="button"
             >
-                Nacist dalsi
-            </Button>
-        </CaravansListWrapper>
+                Načíst další
+            </ShowMoreButton>
+        </SectionContainer>
     )}
 
 

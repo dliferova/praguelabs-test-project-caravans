@@ -2,8 +2,9 @@ import styled from "styled-components";
 
 export const Button = styled.button`
   display: block;
-  padding: 10px 24px;
+  padding: 14px 24px;
   background-color: var(--color-green);
+  color: var(--color-white);
   border: none;
   border-radius: 8px;
   background-image: none;

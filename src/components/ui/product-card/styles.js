@@ -6,6 +6,10 @@ export const ProductCardWrapper = styled.div`
   border: 1px solid var(--color-beige);
   border-radius: 8px;
   background-color: inherit;
+  
+  @media (max-width: 1024px) {
+    margin: 0 auto;
+  }
 `;
 
 export const ProductCardStyled = styled.article`
@@ -14,16 +18,8 @@ export const ProductCardStyled = styled.article`
   justify-content: flex-start;
 `;
 
-export const ProductCardImageWrap = styled.div`
-  min-height: 190px;
-  background-color: var(--color-dark-grey);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`;
-
 export const ProductCardInfoWrap = styled.div`
-  padding: 10px 30px;
+  padding: 10px 7%;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -38,39 +34,27 @@ export const ProductCardContentContainer = styled.div`
   }
 `;
 
-export const TextAccent = styled.p`
-  text-transform: uppercase;
-  color: var(--color-orange);
-  font-size: 12px;
-  line-height: 100%;
-`;
-
-export const HeadingH2 = styled.h2`
-  font-size: 24px;
-  line-height: 100%;
-  margin: 0;
-`;
-
 export const CardIconsGroup = styled.ul`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: flex-start;
+  margin: 0;
+  padding: 0;
 `;
 
-export const StyledIcon = styled.div`
-  display: block;
-  width: 45px;
-  height: 45px;
-  position: relative;
-  
-  &:after {
-    content: "";
-    position: absolute;
-    width: 25px;
-    top: 0;
-    left: 0;
-  }
+export const GroupItem = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin: 0 6% 0 0;
+`;
+
+export const Counter = styled.span`
+  font-size: 14px;
+  color: var(--color-dark-blue);
+  margin-left: 8px;
 `;
 
 export const PriceWrapper = styled.div`

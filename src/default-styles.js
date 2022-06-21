@@ -1,8 +1,14 @@
 import styled from "styled-components";
 
 export const PageWrapper = styled.section`
-  max-width: 1440px;
-  margin: 0 auto;
+    width: 86%;
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 0 10px;
+  
+    @media (max-width: 1024px) {
+      width: 100%;
+    }
 `;
 
 export const HeadingH3 = styled.h3`
