@@ -10,16 +10,16 @@ function valuetext(value) {
     return `${value}Kč`;
 }
 
-const minDistance = 10;
+const RangeSlider = ({ updatedPriceValue }) => {
+    const [priceValue, setPriceValue] = React.useState([1200, 7600]);
 
-const RangeSlider = () => {
-    const [value, setValue] = React.useState([1200, 7600]);
-
-    // const [startValue, setStartValue] = React.useState(1200);
-    // const [endValue, setEndValue] = React.useState(7600);
+    const onPriceChange = (priceValue) => {
+        updatedPriceValue(priceValue)
+    }
 
     const handleChange = (event) => {
-        setValue(event.target.value)
+        setPriceValue(event.target.value);
+        onPriceChange(event.target.value);
     }
 
     return (
@@ -40,7 +40,7 @@ const RangeSlider = () => {
                         getAriaLabel={() => 'Price range'}
                         min={1200}
                         max={7600}
-                        value={value}
+                        value={priceValue}
                         color="secondary"
                         valueLabelDisplay="auto"
                         getAriaValueText={valuetext}
@@ -49,12 +49,12 @@ const RangeSlider = () => {
                     <InputsWrapper>
                         <Input
                             type="number"
-                            value={value[0]}
+                            value={priceValue[0]}
                             onChange={handleChange}
                         />
                         <Input
                             type="number"
-                            value={value[1]}
+                            value={priceValue[1]}
                             onChange={handleChange}
                         />
                     </InputsWrapper>

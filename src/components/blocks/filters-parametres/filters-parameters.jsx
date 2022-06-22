@@ -5,19 +5,19 @@ import RangeSlider from "../../ui/range/range-template";
 import { DecoratedSection, FiltersWrapper, FilterItem } from "./styles";
 import { PageWrapper } from "../../../default-styles";
 
-const FiltersParameters = ({ updatedTypeData }) => {
+const FiltersParameters = ({ updatedPriceValue, updatedTypeData, updatedSelect }) => {
     return (
         <DecoratedSection>
             <PageWrapper>
                 <FiltersWrapper>
                     <FilterItem>
-                        <RangeSlider />
+                        <RangeSlider updatedPriceValue={updatedPriceValue} />
                     </FilterItem>
                     <FilterItem>
                         <TypesList updatedTypeData={updatedTypeData} />
                     </FilterItem>
                     <FilterItem>
-                        <SelectInput />
+                        <SelectInput updatedSelect={updatedSelect} />
                     </FilterItem>
                 </FiltersWrapper>
             </PageWrapper>
