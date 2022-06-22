@@ -2,8 +2,6 @@ import React from 'react';
 import { TypeCardWrapper } from "./styles";
 import { TextBoldHeading, TextSize, GreyTextRegular } from "../text/text";
 
-TextBoldHeading
-
 const TypeCard = ({typ, description, isActive, onClick}) => {
 
     return (

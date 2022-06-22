@@ -1,9 +1,10 @@
 import * as React from 'react';
-import styled from "styled-components";
 import {Box, Slider} from '@mui/material';
 import { ThemeProvider } from '@mui/material/styles';
 import {GreyTextRegular, TextSize} from "../text/text";
 import {theme} from "../../../default-styles";
+import {PriceRangeWrapper} from "./styles";
+import {InputsWrapper, Input} from "../input/input";
 
 function valuetext(value) {
     return `${value}Kč`;
@@ -18,7 +19,6 @@ const RangeSlider = () => {
     // const [endValue, setEndValue] = React.useState(7600);
 
     const handleChange = (event) => {
-        console.log(event.target.value);
         setValue(event.target.value)
     }
 
@@ -47,12 +47,16 @@ const RangeSlider = () => {
                         onChange={handleChange}
                     />
                     <InputsWrapper>
-                        {/*<Input*/}
-                        {/*    value={value[0]}*/}
-                        {/*/>*/}
-                        {/*<Input*/}
-                        {/*    value={value[1]}*/}
-                        {/*/>*/}
+                        <Input
+                            type="number"
+                            value={value[0]}
+                            onChange={handleChange}
+                        />
+                        <Input
+                            type="number"
+                            value={value[1]}
+                            onChange={handleChange}
+                        />
                     </InputsWrapper>
                 </Box>
             </ThemeProvider>
@@ -61,31 +65,3 @@ const RangeSlider = () => {
 }
 
 export default RangeSlider;
-
-const InputsWrapper = styled.div`
-  display: flex;
-  flex-direction: row;
-`;
-
-const Input = styled.input`
-  display: flex;
-  flex-direction: row;
-  width: 156px;
-  min-height: 48px;
-  border: 1px solid #EDEAE3;
-  border-radius: 8px;
-  color: var(--color-dark-blue);
-  margin: 0 16px 0 0;
-  
-  &:last-of-type {
-    margin: 0;
-  }
-`;
-
-const PriceRangeWrapper = styled.div`
-  padding: 0 16px 0 0;
-  
-  @media (max-width: 1024px) {
-    padding: 0 16px;
-  }
-`

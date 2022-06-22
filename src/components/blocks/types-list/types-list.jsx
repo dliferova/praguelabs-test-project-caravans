@@ -1,11 +1,15 @@
 import React, {useState} from 'react';
 import TypeCard from "../../ui/type-card/type-card";
-import { TypesListStyled, TypesListWrapper } from "./styles";
+import {TypesListStyled, TypesListWrapper} from "./styles";
 import {filters} from "../../../const";
 import {GreyTextRegular, TextSize} from "../../ui/text/text"
 
-const TypesList = ({}) => {
+const TypesList = ({ updatedTypeData }) => {
     const [activeFilter, setActiveFilter] = useState([]);
+
+    const onFilterChange = (activeFilter) => {
+        updatedTypeData(activeFilter)
+    }
 
     const handleClick = (filterId) => {
         const isActive = activeFilter.find(filter => filter === filterId)
@@ -15,7 +19,8 @@ const TypesList = ({}) => {
         } else {
             newArray = activeFilter.filter(filter => filter !== filterId)
         }
-        setActiveFilter(newArray)
+        setActiveFilter(newArray);
+        onFilterChange(newArray);
     }
 
     return (
@@ -26,6 +31,7 @@ const TypesList = ({}) => {
                 marginBottom={'16px'}
             >Typ karavanu
             </GreyTextRegular>
+
             <TypesListStyled>
                 {
                     filters.map((filter) =>

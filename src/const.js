@@ -1,21 +1,21 @@
 export const filters = [
     {
-        id: "campervan",
+        id: "Campervan",
         type: "Camprevan",
         description: "Obytka s rozměry osobáku, se kterou dojedete všude."
     },
     {
-        id: "intergrated",
+        id: "Intergrated",
         type: "Integrál",
         description: "Král mezi karavany. Luxus na kolech."
     },
     {
-        id: "builtin",
+        id: "BuiltIn",
         type: "Vestavba",
         description: "Celý byt geniálně poskládaný do dodávky."
     },
     {
-        id: "alcove",
+        id: "Alcove",
         type: "Přívěs",
         description: "Tažný karavan za vaše auto. Od kapkovitých až po rodinné."
     },

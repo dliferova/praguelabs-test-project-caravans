@@ -1,12 +1,11 @@
-import React from 'react';
+import React, {useState} from 'react';
 import TypesList from "../types-list/types-list";
 import SelectInput from "../../ui/select/select";
 import RangeSlider from "../../ui/range/range-template";
 import { DecoratedSection, FiltersWrapper, FilterItem } from "./styles";
 import { PageWrapper } from "../../../default-styles";
 
-const FiltersParameters = ({}) => {
-
+const FiltersParameters = ({ updatedTypeData }) => {
     return (
         <DecoratedSection>
             <PageWrapper>
@@ -15,7 +14,7 @@ const FiltersParameters = ({}) => {
                         <RangeSlider />
                     </FilterItem>
                     <FilterItem>
-                        <TypesList />
+                        <TypesList updatedTypeData={updatedTypeData} />
                     </FilterItem>
                     <FilterItem>
                         <SelectInput />
