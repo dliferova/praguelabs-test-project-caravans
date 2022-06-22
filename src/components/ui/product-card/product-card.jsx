@@ -20,14 +20,14 @@ import {
 } from "../text/text";
 import Image from 'next/image';
 
-const ProductCard = ({props}) => {
+const ProductCard = ({ product }) => {
     return (
         <ProductCardWrapper>
             <ProductCardStyled>
                 <div style={{borderRadius: '5px', overflow: 'hidden'}}>
                     <Image
-                        src='https://d35xwkx70uaomf.cloudfront.net/017bc56a-8387-4b2c-b044-a01a0b7ddf1b.jpg'
-                        alt='Caravan Forster A 699 HB'
+                        src={product.pictures[0]}
+                        alt={product.name}
                         width="390"
                         height="193"
                         objectFit="cover"
@@ -40,13 +40,13 @@ const ProductCard = ({props}) => {
                             <TextAccent
                                 size={TextSize.EXTRA_SMALL}
                                 marginBottom={'10px'}
-                            >Integrál
+                            >{product.vehicleType}
                             </TextAccent>
                             <TextBoldHeading
                                 as="h2"
                                 size={TextSize.BIG}
                                 fontWeight={'bold'}
-                            >Forster A 699 HB
+                            >{product.name}
                             </TextBoldHeading>
                         </div>
                     </ProductCardContentContainer>
@@ -54,7 +54,7 @@ const ProductCard = ({props}) => {
                         <div className="product-card__conveniences">
                             <Text
                                 marginBottom={'10px'}
-                            >Prachov
+                            >{product.locations}
                             </Text>
                             <CardIconsGroup>
                                 <GroupItem>
@@ -64,7 +64,7 @@ const ProductCard = ({props}) => {
                                         width="20"
                                         height="20"
                                     />
-                                    <Counter>7</Counter>
+                                    <Counter>{product.passengersCapacity}</Counter>
                                 </GroupItem>
                                 <GroupItem>
                                     <Image
@@ -73,24 +73,28 @@ const ProductCard = ({props}) => {
                                         width="20"
                                         height="20"
                                     />
-                                    <Counter>4</Counter>
+                                    <Counter>{product.sleepCapacity}</Counter>
                                 </GroupItem>
-                                <GroupItem>
-                                    <Image
-                                        src='/wc-icon.svg'
-                                        alt='wc-info'
-                                        width="20"
-                                        height="20"
-                                    />
-                                </GroupItem>
-                                <GroupItem>
-                                    <Image
-                                        src='/shower-icon.svg'
-                                        alt='shower-info'
-                                        width="20"
-                                        height="20"
-                                    />
-                                </GroupItem>
+                                {product.toilet ?
+                                    <GroupItem>
+                                        <Image
+                                            src='/wc-icon.svg'
+                                            alt='wc-info'
+                                            width="20"
+                                            height="20"
+                                        />
+                                    </GroupItem> : null
+                                }
+                                {product.shower ?
+                                    <GroupItem>
+                                        <Image
+                                            src='/shower-icon.svg'
+                                            alt='shower-info'
+                                            width="20"
+                                            height="20"
+                                        />
+                                    </GroupItem> : null
+                                }
                             </CardIconsGroup>
                         </div>
                     </ProductCardContentContainer>
@@ -98,13 +102,14 @@ const ProductCard = ({props}) => {
                         <PriceWrapper>
                             <GreyTextRegular>Cena od</GreyTextRegular>
                             <TextWithIcon>
-                                <PriceInfo>2 750 &#75;&#269; &#47;&nbsp;den</PriceInfo>
-                                <Image
-                                    src='/action.svg'
-                                    alt='passengers-count'
-                                    width="16"
-                                    height="16"
-                                />
+                                <PriceInfo>{product.price} &#75;&#269; &#47;&nbsp;den</PriceInfo>
+                                {product.instantBookable ?
+                                    <Image
+                                        src='/action.svg'
+                                        alt='passengers-count'
+                                        width="16"
+                                        height="16"
+                                    /> : null}
                             </TextWithIcon>
                         </PriceWrapper>
                     </ProductCardContentContainer>

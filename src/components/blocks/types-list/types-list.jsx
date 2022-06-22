@@ -4,13 +4,19 @@ import { TypesListStyled, TypesListWrapper } from "./styles";
 import {filters} from "../../../const";
 import {GreyTextRegular, TextSize} from "../../ui/text/text"
 
-const TypesList = () => {
-    const state = {
-        activeFilter: [],
+const TypesList = ({}) => {
+    const [activeFilter, setActiveFilter] = useState([]);
+
+    const handleClick = (filterId) => {
+        const isActive = activeFilter.find(filter => filter === filterId)
+        let newArray;
+        if (!isActive) {
+            newArray = activeFilter.concat([filterId])
+        } else {
+            newArray = activeFilter.filter(filter => filter !== filterId)
+        }
+        setActiveFilter(newArray)
     }
-
-    const [activeFilter, setActiveFilter] = useState([filters[0]]);
-
 
     return (
         <TypesListWrapper>
@@ -27,6 +33,8 @@ const TypesList = () => {
                             key={filter.id}
                             typ={filter.type}
                             description={filter.description}
+                            isActive={activeFilter.find(item => item === filter.id)}
+                            onClick={() => handleClick(filter.id)}
                         />
                     )
                 }

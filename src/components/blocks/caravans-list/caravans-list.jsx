@@ -2,16 +2,16 @@ import React from "react";
 import ProductCard from "../../ui/product-card/product-card";
 import {SectionContainer, CaravansListWrapper, ShowMoreButton} from "./styles";
 
-function CaravansList({}) {
+function CaravansList({ products }) {
     return (
         <SectionContainer>
             <CaravansListWrapper>
-                <ProductCard/>
-                <ProductCard/>
-                <ProductCard/>
-                <ProductCard/>
-                <ProductCard/>
-                <ProductCard/>
+                {products.map((product, index) =>
+                    <ProductCard
+                        key={index}
+                        product={product}
+                    />
+                    )}
             </CaravansListWrapper>
 
             <ShowMoreButton

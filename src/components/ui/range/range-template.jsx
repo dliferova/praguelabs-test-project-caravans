@@ -47,12 +47,12 @@ const RangeSlider = () => {
                         onChange={handleChange}
                     />
                     <InputsWrapper>
-                        <Input
-                            value={value[0]}
-                        />
-                        <Input
-                            value={value[1]}
-                        />
+                        {/*<Input*/}
+                        {/*    value={value[0]}*/}
+                        {/*/>*/}
+                        {/*<Input*/}
+                        {/*    value={value[1]}*/}
+                        {/*/>*/}
                     </InputsWrapper>
                 </Box>
             </ThemeProvider>

@@ -5,7 +5,8 @@ import RangeSlider from "../../ui/range/range-template";
 import { DecoratedSection, FiltersWrapper, FilterItem } from "./styles";
 import { PageWrapper } from "../../../default-styles";
 
-const FiltersParameters = () => {
+const FiltersParameters = ({}) => {
+
     return (
         <DecoratedSection>
             <PageWrapper>

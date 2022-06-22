@@ -4,15 +4,10 @@ import { TextBoldHeading, TextSize, GreyTextRegular } from "../text/text";
 
 TextBoldHeading
 
-const TypeCard = ({typ, description, onCLick}) => {
-
-    onCLick = (event) => {
-        console.log(event.currentTarget)
-        console.log(typ)
-    }
+const TypeCard = ({typ, description, isActive, onClick}) => {
 
     return (
-        <TypeCardWrapper onClick={onCLick}>
+        <TypeCardWrapper active={isActive} onClick={onClick}>
             <TextBoldHeading
                 size={TextSize.MEDIUM}
                 marginBottom={'5px'}
