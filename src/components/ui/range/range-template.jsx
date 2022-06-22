@@ -10,11 +10,11 @@ function valuetext(value) {
     return `${value}Kč`;
 }
 
-const RangeSlider = ({ updatedPriceValue }) => {
+const RangeSlider = ({ onPriceUpdate }) => {
     const [priceValue, setPriceValue] = React.useState([1200, 7600]);
 
     const onPriceChange = (priceValue) => {
-        updatedPriceValue(priceValue)
+        onPriceUpdate(priceValue)
     }
 
     const handleChange = (event) => {

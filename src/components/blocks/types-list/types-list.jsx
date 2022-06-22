@@ -4,11 +4,12 @@ import {TypesListStyled, TypesListWrapper} from "./styles";
 import {filters} from "../../../const";
 import {GreyTextRegular, TextSize} from "../../ui/text/text"
 
-const TypesList = ({ updatedTypeData }) => {
+const
+    TypesList = ({ onTypeUpdate }) => {
     const [activeFilter, setActiveFilter] = useState([]);
 
     const onFilterChange = (activeFilter) => {
-        updatedTypeData(activeFilter)
+        onTypeUpdate(activeFilter)
     }
 
     const handleClick = (filterId) => {

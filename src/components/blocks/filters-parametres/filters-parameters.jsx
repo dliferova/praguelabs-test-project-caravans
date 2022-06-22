@@ -1,23 +1,54 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import TypesList from "../types-list/types-list";
 import SelectInput from "../../ui/select/select";
 import RangeSlider from "../../ui/range/range-template";
-import { DecoratedSection, FiltersWrapper, FilterItem } from "./styles";
-import { PageWrapper } from "../../../default-styles";
+import {DecoratedSection, FiltersWrapper, FilterItem} from "./styles";
+import {PageWrapper} from "../../../default-styles";
 
-const FiltersParameters = ({ updatedPriceValue, updatedTypeData, updatedSelect }) => {
+const FiltersParameters = ({ onFilterChange }) => {
+    const [filterObject, setFilter] = useState({
+        priceRange: [1200, 7600],
+        activeFilters: [],
+        isInstantBookable: true
+    });
+
+    useEffect(() => {
+        onFilterChange(filterObject)
+    }, [filterObject])
+
+    const handlePriceValue = (priceValue) => {
+        setFilter((prevState) => ({
+            ...prevState,
+            priceRange: priceValue
+        }))
+    }
+
+    const handleTypeChange = (activeFilters) => {
+        setFilter((prevState) => ({
+            ...prevState,
+            activeFilters: activeFilters
+        }))
+    }
+
+    const handleSelectChange = (selectedItem) => {
+        setFilter((prevState) => ({
+            ...prevState,
+            isInstantBookable: selectedItem
+        }))
+    }
+
     return (
         <DecoratedSection>
             <PageWrapper>
                 <FiltersWrapper>
                     <FilterItem>
-                        <RangeSlider updatedPriceValue={updatedPriceValue} />
+                        <RangeSlider onPriceUpdate={handlePriceValue}/>
                     </FilterItem>
                     <FilterItem>
-                        <TypesList updatedTypeData={updatedTypeData} />
+                        <TypesList onTypeUpdate={handleTypeChange}/>
                     </FilterItem>
                     <FilterItem>
-                        <SelectInput updatedSelect={updatedSelect} />
+                        <SelectInput onSelectUpdate={handleSelectChange}/>
                     </FilterItem>
                 </FiltersWrapper>
             </PageWrapper>

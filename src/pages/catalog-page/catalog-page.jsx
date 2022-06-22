@@ -6,11 +6,6 @@ import {PageWrapper} from "../../default-styles";
 const CatalogPage = () => {
     const [productsData, setProductsData] = useState([]);
     const [products, setProductsList] = useState([]);
-    const [filterObject, setFilter] = useState({
-            priceRange: [1200, 7600],
-            activeFilters: [],
-            isInstantBookable: true
-    });
 
     useEffect(() => {
         fetch('http://localhost:3000/api/data')
@@ -26,46 +21,20 @@ const CatalogPage = () => {
         setProductsList(productsData)
     }, [productsData])
 
-    useEffect( () => {
+    const onFilterChange = (filters) => {
         const filteredList = productsData
-            .filter(item => filterObject.priceRange[0] <= item.price && filterObject.priceRange[1] >= item.price)
-            .filter(item => filterObject.activeFilters.length === 0 || filterObject.activeFilters.includes(item.vehicleType))
-            .filter(item => item.instantBookable === filterObject.isInstantBookable)
+            .filter(item => filters.priceRange[0] <= item.price && filters.priceRange[1] >= item.price)
+            .filter(item => filters.activeFilters.length === 0 || filters.activeFilters.includes(item.vehicleType))
+            .filter(item => item.instantBookable === filters.isInstantBookable)
             .sort((productA, productB) => productA.price - productB.price)
 
         setProductsList(filteredList);
-
-    }, [filterObject])
-
-    const handlerPriceValue = (priceValue) => {
-        setFilter((prevState) => ({
-            ...prevState,
-            priceRange: priceValue
-        }))
-    }
-
-    const handlerTypeChange = (activeFilters) => {
-        setFilter((prevState) => ({
-            ...prevState,
-            activeFilters: activeFilters
-        }))
-    }
-
-    const handlerSelectChange = (selectedItem) => {
-        setFilter((prevState) => ({
-            ...prevState,
-            isInstantBookable: selectedItem
-        }))
     }
 
     return (
         <>
             <h1 className="visually-hidden">Caravans Catalog Page</h1>
-            <FiltersParameters
-                updatedPriceValue={handlerPriceValue}
-                updatedTypeData={handlerTypeChange}
-                updatedSelect={handlerSelectChange}
-            />
+            <FiltersParameters onFilterChange={onFilterChange} />
             <PageWrapper>
                 {products && <CaravansList products={products}/>}
             </PageWrapper>

@@ -4,17 +4,16 @@ import styled from "styled-components";
 import Image from 'next/image';
 import {GreyTextRegular, TextSize, TextWithIcon} from "../text/text";
 
-const SelectInput = ({ updatedSelect }) => {
+const SelectInput = ({ onSelectUpdate }) => {
     const [status, setStatus] = React.useState('true');
 
-    const onSelectUpdate = (selectedItem) => {
-        updatedSelect(selectedItem)
+    const onSelectChange = (selectedItem) => {
+        onSelectUpdate(selectedItem)
     }
 
     const handleChange = (event) => {
         setStatus(event.target.value);
-        onSelectUpdate(event.target.value);
-        console.log(event.target.value);
+        onSelectChange(event.target.value);
     };
 
     return (
