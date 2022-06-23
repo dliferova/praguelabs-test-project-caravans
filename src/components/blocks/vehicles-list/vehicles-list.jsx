@@ -1,6 +1,7 @@
 import React, {useState, useMemo} from "react";
 import VehicleCard from "../../ui/vehicle-card/vehicle-card";
 import {SectionContainer, CaravansListWrapper, ShowMoreButton} from "./styles";
+import NoResults from "../no-results/no-results";
 
 const MIN_COUNT_ITEMS = 5;
 const CARDS_COUNT_PER_STEP = 6;
@@ -31,7 +32,7 @@ function VehiclesList({ vehicles }) {
             <CaravansListWrapper>
                 {itemsToShow.length
                     ? itemsToShow
-                    : "Loading..."}
+                    : <NoResults/>}
             </CaravansListWrapper>
 
             {vehicles.length > MIN_COUNT_ITEMS && vehicles.length > numberOfShownVehicles  ?

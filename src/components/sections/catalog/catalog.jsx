@@ -1,7 +1,10 @@
+import 'react-toastify/dist/ReactToastify.css';
 import React, {useEffect, useState} from 'react';
 import VehiclesList from "../../blocks/vehicles-list/vehicles-list";
 import FiltersParameters from "../../blocks/filters-parametres/filters-parameters";
 import {PageWrapper} from "../../../theme-styles";
+import { ToastContainer, toast } from 'react-toastify';
+import {ErrorMessages} from "../../../const";
 
 const Catalog = () => {
     const [productsData, setProductsData] = useState([]);
@@ -15,6 +18,8 @@ const Catalog = () => {
                     setProductsData(copy)
                 })
             })
+            .catch(() => {
+                toast.error(ErrorMessages.FAILED_GET_API_DATA)})
     }, []);
 
     useEffect( () => {
@@ -35,6 +40,7 @@ const Catalog = () => {
         <>
             <h1 className="visually-hidden">Caravans Catalog Page</h1>
             <FiltersParameters onFilterChange={onFilterChange} />
+            <ToastContainer />
             <PageWrapper>
                 {vehicles && <VehiclesList vehicles={vehicles}/>}
             </PageWrapper>

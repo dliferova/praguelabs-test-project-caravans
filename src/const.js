@@ -20,3 +20,7 @@ export const filters = [
         description: "Tažný karavan za vaše auto. Od kapkovitých až po rodinné."
     },
 ];
+
+export const ErrorMessages =  {
+    FAILED_GET_API_DATA: 'Failed to load data. Please try again.'
+}
