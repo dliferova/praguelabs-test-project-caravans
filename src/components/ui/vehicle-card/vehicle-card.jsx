@@ -1,5 +1,5 @@
 import React from 'react';
-import { filters } from "../../../const";
+import {filters} from "../../../const";
 import {
     ProductCardWrapper,
     ProductCardStyled,
@@ -14,15 +14,10 @@ import {
 } from "./styles";
 import {Text, TextSize, TextBoldHeading, GreyTextRegular, TextAccent, TextWithIcon} from "../text/text";
 import Image from 'next/image';
-import { Navigation } from 'swiper';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
-import 'swiper/css/scrollbar';
-import {Box} from "@mui/material";
+import {Carousel} from "react-responsive-carousel";
+import "react-responsive-carousel/lib/styles/carousel.min.css";
 
-const VehicleCard = ({ vehicle }) => {
+const VehicleCard = ({vehicle}) => {
 
     const formattedVehicle = (filters, product) => {
         return filters.find(filter => filter.id === product.vehicleType).type
@@ -34,17 +29,11 @@ const VehicleCard = ({ vehicle }) => {
         <ProductCardWrapper>
             <ProductCardStyled>
                 <ProductCardImgWrap>
-                    <Swiper
-                        modules={[Navigation]}
-                        navigation={true}
-                        slidesPerView={1}
-                    >
+                    <Carousel showArrows={true}>
                         {
                             vehicle.pictures
                                 .map((item, index) =>
-                                    <SwiperSlide
-                                        key={vehicle.name + 'image_' + index}
-                                    >
+                                    <div key={vehicle.name + 'image_' + index}>
                                         <Image
                                             className="card-img"
                                             src={item}
@@ -54,11 +43,10 @@ const VehicleCard = ({ vehicle }) => {
                                             objectFit="cover"
                                             quality="75"
                                         />
-                                    </SwiperSlide>
+                                    </div>
                                 )
                         }
-                    </Swiper>
-
+                    </Carousel>
                 </ProductCardImgWrap>
                 <ProductCardInfoWrap>
                     <ProductCardContentContainer>

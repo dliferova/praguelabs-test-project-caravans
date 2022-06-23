@@ -62,3 +62,11 @@ input[type=number] {
   background-color: var(--color-light-grey) !important;
   height: auto;
 }
+
+.carousel:last-of-type{
+  display: none !important;
+}
+
+.carousel-status {
+  display: none !important;
+}
