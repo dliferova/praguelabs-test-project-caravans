@@ -21,14 +21,14 @@ import {
 } from "../text/text";
 import Image from 'next/image';
 
-const ProductCard = ({ product }) => {
+const VehicleCard = ({ vehicle }) => {
 
     const formattedVehicleTypeF = (filters, product) => {
         return filters
             .filter(filter => filter.id === product.vehicleType)[0].type
     }
 
-    const formattedVehicleType = formattedVehicleTypeF(filters, product)
+    const formattedVehicleType = formattedVehicleTypeF(filters, vehicle)
 
 
     return (
@@ -36,8 +36,8 @@ const ProductCard = ({ product }) => {
             <ProductCardStyled>
                 <div style={{borderRadius: '5px', overflow: 'hidden'}}>
                     <Image
-                        src={product.pictures[0]}
-                        alt={product.name}
+                        src={vehicle.pictures[0]}
+                        alt={vehicle.name}
                         width="390"
                         height="193"
                         objectFit="cover"
@@ -56,7 +56,7 @@ const ProductCard = ({ product }) => {
                                 as="h2"
                                 size={TextSize.BIG}
                                 fontWeight={'bold'}
-                            >{product.name}
+                            >{vehicle.name}
                             </TextBoldHeading>
                         </div>
                     </ProductCardContentContainer>
@@ -64,7 +64,7 @@ const ProductCard = ({ product }) => {
                         <div className="product-card__conveniences">
                             <Text
                                 marginBottom={'10px'}
-                            >{product.location}
+                            >{vehicle.location}
                             </Text>
                             <CardIconsGroup>
                                 <GroupItem>
@@ -74,7 +74,7 @@ const ProductCard = ({ product }) => {
                                         width="20"
                                         height="20"
                                     />
-                                    <Counter>{product.passengersCapacity}</Counter>
+                                    <Counter>{vehicle.passengersCapacity}</Counter>
                                 </GroupItem>
                                 <GroupItem>
                                     <Image
@@ -83,9 +83,9 @@ const ProductCard = ({ product }) => {
                                         width="20"
                                         height="20"
                                     />
-                                    <Counter>{product.sleepCapacity}</Counter>
+                                    <Counter>{vehicle.sleepCapacity}</Counter>
                                 </GroupItem>
-                                {product.toilet ?
+                                {vehicle.toilet ?
                                     <GroupItem>
                                         <Image
                                             src='/wc-icon.svg'
@@ -95,7 +95,7 @@ const ProductCard = ({ product }) => {
                                         />
                                     </GroupItem> : null
                                 }
-                                {product.shower ?
+                                {vehicle.shower ?
                                     <GroupItem>
                                         <Image
                                             src='/shower-icon.svg'
@@ -112,8 +112,8 @@ const ProductCard = ({ product }) => {
                         <PriceWrapper>
                             <GreyTextRegular>Cena od</GreyTextRegular>
                             <TextWithIcon>
-                                <PriceInfo>{product.price} &#75;&#269; &#47;&nbsp;den</PriceInfo>
-                                {product.instantBookable ?
+                                <PriceInfo>{vehicle.price} &#75;&#269; &#47;&nbsp;den</PriceInfo>
+                                {vehicle.instantBookable ?
                                     <Image
                                         src='/action.svg'
                                         alt='passengers-count'
@@ -129,4 +129,4 @@ const ProductCard = ({ product }) => {
     );
 };
 
-export default ProductCard;
+export default VehicleCard;

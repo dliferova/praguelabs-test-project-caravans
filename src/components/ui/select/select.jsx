@@ -2,7 +2,7 @@ import React from 'react';
 import {FormControl, Select, MenuItem} from '@mui/material';
 import styled from "styled-components";
 import Image from 'next/image';
-import {theme} from "../../../default-styles";
+import {theme} from "../../../theme-styles";
 import {GreyTextRegular, TextSize, TextWithIcon} from "../text/text";
 import {ThemeProvider} from "@mui/material/styles";
 

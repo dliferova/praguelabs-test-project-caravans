@@ -1,11 +1,11 @@
 import React, {useEffect, useState} from 'react';
-import CaravansList from "../../components/blocks/caravans-list/caravans-list";
-import FiltersParameters from "../../components/blocks/filters-parametres/filters-parameters";
-import {PageWrapper} from "../../default-styles";
+import VehiclesList from "../../blocks/vehicles-list/vehicles-list";
+import FiltersParameters from "../../blocks/filters-parametres/filters-parameters";
+import {PageWrapper} from "../../../theme-styles";
 
-const CatalogPage = () => {
+const Catalog = () => {
     const [productsData, setProductsData] = useState([]);
-    const [products, setProductsList] = useState([]);
+    const [vehicles, setVehiclesList] = useState([]);
 
     useEffect(() => {
         fetch('http://localhost:3000/api/data')
@@ -18,7 +18,7 @@ const CatalogPage = () => {
     }, []);
 
     useEffect( () => {
-        setProductsList(productsData)
+        setVehiclesList(productsData)
     }, [productsData])
 
     const onFilterChange = (filters) => {
@@ -28,7 +28,7 @@ const CatalogPage = () => {
             .filter(item => item.instantBookable === filters.isInstantBookable)
             .sort((productA, productB) => productA.price - productB.price)
 
-        setProductsList(filteredList);
+        setVehiclesList(filteredList);
     }
 
     return (
@@ -36,10 +36,10 @@ const CatalogPage = () => {
             <h1 className="visually-hidden">Caravans Catalog Page</h1>
             <FiltersParameters onFilterChange={onFilterChange} />
             <PageWrapper>
-                {products && <CaravansList products={products}/>}
+                {vehicles && <VehiclesList vehicles={vehicles}/>}
             </PageWrapper>
         </>
     );
 };
 
-export default CatalogPage;
+export default Catalog;

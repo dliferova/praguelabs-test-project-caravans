@@ -1,8 +1,8 @@
 import * as React from 'react';
 import {Box, Slider} from '@mui/material';
-import { ThemeProvider } from '@mui/material/styles';
+import {ThemeProvider} from '@mui/material/styles';
 import {GreyTextRegular, TextSize} from "../text/text";
-import {theme} from "../../../default-styles";
+import {theme} from "../../../theme-styles";
 import {PriceRangeWrapper} from "./styles";
 import {InputsWrapper, Input, StyledInput} from "../input/input";
 import {useEffect} from "react";
@@ -11,8 +11,11 @@ function valuetext(value) {
     return `${value}Kč`;
 }
 
-const RangeSlider = ({ onPriceUpdate }) => {
-    const [priceValue, setPriceValue] = React.useState([1200, 7600]);
+const MIN_PRICE = 1200;
+const MAX_PRICE = 7600;
+
+const RangeSlider = ({onPriceUpdate}) => {
+    const [priceValue, setPriceValue] = React.useState([MIN_PRICE, MAX_PRICE]);
 
     useEffect(() => {
         onPriceUpdate(priceValue)
@@ -47,13 +50,15 @@ const RangeSlider = ({ onPriceUpdate }) => {
                     </GreyTextRegular>
                     <Slider
                         getAriaLabel={() => 'Price range'}
-                        min={1200}
-                        max={7600}
+                        min={MIN_PRICE}
+                        max={MAX_PRICE}
                         value={priceValue}
                         color="secondary"
                         valueLabelDisplay="auto"
                         getAriaValueText={valuetext}
-                        onChange={(evt)=> {handleChange(evt.target.value)}}
+                        onChange={(evt) => {
+                            handleChange(evt.target.value)
+                        }}
                         sx={{
                             marginBottom: 2,
                         }}
@@ -62,16 +67,23 @@ const RangeSlider = ({ onPriceUpdate }) => {
                         <StyledInput content={'Kč'}>
                             <Input
                                 type="number"
-                                multiple={true}
+                                min={MIN_PRICE}
+                                max={MAX_PRICE}
                                 value={priceValue[0]}
-                                onChange={(evt)=> {handleChangeInputMin(evt.target.value)}}
+                                onChange={(evt) => {
+                                    handleChangeInputMin(evt.target.value)
+                                }}
                             />
                         </StyledInput>
                         <StyledInput>
                             <Input
                                 type="number"
+                                min={MIN_PRICE}
+                                max={MAX_PRICE}
                                 value={priceValue[1]}
-                                onChange={(evt)=> {handleChangeInputMax(evt.target.value)}}
+                                onChange={(evt) => {
+                                    handleChangeInputMax(evt.target.value)
+                                }}
                             />
                         </StyledInput>
                     </InputsWrapper>

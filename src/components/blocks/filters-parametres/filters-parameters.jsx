@@ -3,7 +3,7 @@ import TypesList from "../types-list/types-list";
 import SelectInput from "../../ui/select/select";
 import RangeSlider from "../../ui/range/range";
 import {DecoratedSection, FiltersWrapper, FilterItem} from "./styles";
-import {PageWrapper} from "../../../default-styles";
+import {PageWrapper} from "../../../theme-styles";
 
 const FiltersParameters = ({ onFilterChange }) => {
     const [filterObject, setFilter] = useState({

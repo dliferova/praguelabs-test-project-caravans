@@ -1,11 +1,11 @@
 import Header from "../src/components/layout/header/header";
-import CatalogPage from "../src/pages/catalog-page/catalog-page";
+import Catalog from "../src/components/sections/catalog/catalog";
 
 const Home = () => {
   return (
       <>
           <Header/>
-          <CatalogPage/>
+          <Catalog/>
       </>
   )
 }

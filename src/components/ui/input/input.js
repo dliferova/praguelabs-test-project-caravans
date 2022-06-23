@@ -9,13 +9,13 @@ export const Input = styled.input`
   font-size: 16px;
   display: flex;
   flex-direction: row;
-  max-width: 156px;
   min-height: 48px;
   border: 1px solid var(--color-beige);
   border-radius: 8px;
   color: var(--color-dark-blue);
   padding: 13px 12px;
   cursor: pointer;
+  min-width: 156px;
   
   &:last-of-type {
     margin: 0;

@@ -66,3 +66,35 @@ npm run dev
 # nebo
 yarn dev
 ```
+
+# Řešení a komentáře
+
+## Struktura projektu
+Vývoj projektu probíhal ve složce **src**. 
+
+Struktura src složky: 
+
+- theme-styles.js (nastavení společného tématu obecné pro projekt)
+- const.js (konstanty použité v projektu)
+- components (všechny soubory)
+    * **blocks** - bloky, které lze znovu použít v nových součástech
+    * **layout** - části layout 
+    * **sections** - velké části projektu (layout + blocks + ui)
+    * **ui** - malé části ui prvků (tlačítka, inputs, logo)
+
+Pro stylování jsem použivala [Styled Components](https://styled-components.com/) + [Material-UI](https://mui.com/).  
+
+Hlavni pozadavky:
+- Hlavička ✅
+- Filtry
+  - Slider na cenu - cena od do, výběr knihovny pro slider je na Vás. [100 - 10000] Kč ✅
+  - Typ karavanu - je možné vybrat více typů pro filtrovaní [Campervan, Intergrated, BuiltIn , Alcove] ✅
+  - Okamžitá rezervace - jednoduchý toggle [true / false] ✅
+- Seznam karavanů ✅
+- Tlačítko pro načtení dalších karavanů ✅
+
+Bonusové objectives:
+- TypeScript ❌ **zatím studuji**
+- Carousel pro obrázky karavanů ✅ **obecně používám [swiper.js](https://swiperjs.com/react), ale tu jsem měla použít [react-responsive-carousel](https://github.com/leandrowd/react-responsive-carousel) aby byla responzivni**
+- NextImage pro obrázky karavanů ⚠️ **seznamila jsem se s next/image a zkusila jsem ho pouzit**
+- OG tags pomocí NextHead ❌
