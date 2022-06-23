@@ -1,4 +1,5 @@
 import React, {memo} from 'react';
+import {filters} from "../../../const";
 import {
     ProductCardWrapper,
     ProductCardStyled,
@@ -21,6 +22,15 @@ import {
 import Image from 'next/image';
 
 const ProductCard = ({ product }) => {
+
+    const formattedVehicleTypeF = (filters, product) => {
+        return filters
+            .filter(filter => filter.id === product.vehicleType)[0].type
+    }
+
+    const formattedVehicleType = formattedVehicleTypeF(filters, product)
+
+
     return (
         <ProductCardWrapper>
             <ProductCardStyled>
@@ -40,7 +50,7 @@ const ProductCard = ({ product }) => {
                             <TextAccent
                                 size={TextSize.EXTRA_SMALL}
                                 marginBottom={'10px'}
-                            >{product.vehicleType}
+                            >{formattedVehicleType}
                             </TextAccent>
                             <TextBoldHeading
                                 as="h2"
@@ -54,7 +64,7 @@ const ProductCard = ({ product }) => {
                         <div className="product-card__conveniences">
                             <Text
                                 marginBottom={'10px'}
-                            >{product.locations}
+                            >{product.location}
                             </Text>
                             <CardIconsGroup>
                                 <GroupItem>

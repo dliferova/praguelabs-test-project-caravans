@@ -20,7 +20,7 @@ export const ProductCardStyled = styled.article`
 `;
 
 export const ProductCardInfoWrap = styled.div`
-  padding: 0 7%;
+  padding: 0 7% 10px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;

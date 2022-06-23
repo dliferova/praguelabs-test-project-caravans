@@ -2,7 +2,9 @@ import React from 'react';
 import {FormControl, Select, MenuItem} from '@mui/material';
 import styled from "styled-components";
 import Image from 'next/image';
+import {theme} from "../../../default-styles";
 import {GreyTextRegular, TextSize, TextWithIcon} from "../text/text";
+import {ThemeProvider} from "@mui/material/styles";
 
 const SelectInput = ({ onSelectUpdate }) => {
     const [status, setStatus] = React.useState('true');
@@ -32,20 +34,35 @@ const SelectInput = ({ onSelectUpdate }) => {
 
                 />
             </TextWithIcon>
-            <FormControl sx={{
-                width: 176,
-                marginTop: 2,
-            }}>
-                <Select
-                    labelId="instant-reservation-label"
-                    id="instant-reservation"
-                    value={status}
-                    onChange={handleChange}
-                >
-                    <MenuItem value={true}>Ano</MenuItem>
-                    <MenuItem value={false}>Ne</MenuItem>
-                </Select>
-            </FormControl>
+            <ThemeProvider theme={theme}>
+                <FormControl sx={{
+                    width: 176,
+                    marginTop: 2,
+                    borderColor: "secondary",
+                }}>
+                    <Select
+                        labelId="instant-reservation-label"
+                        id="instant-reservation"
+                        value={status}
+                        onChange={handleChange}
+                        inputProps={{
+                            sx: {
+                                "&.MuiOutlinedInput-input": {
+                                    border: "1px solid var(--color-beige)"
+                                },
+
+                                "&.MuiOutlinedInput-input:hover": {
+                                    border: "1px solid var(--color-green)",
+                                }
+                            }
+                        }}
+                    >
+                        <MenuItem
+                            value={true}>Ano</MenuItem>
+                        <MenuItem value={false}>Ne</MenuItem>
+                    </Select>
+                </FormControl>
+            </ThemeProvider>
         </SelectInputWrapper>
     )
 };

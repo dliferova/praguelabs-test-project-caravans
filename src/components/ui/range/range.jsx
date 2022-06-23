@@ -4,7 +4,8 @@ import { ThemeProvider } from '@mui/material/styles';
 import {GreyTextRegular, TextSize} from "../text/text";
 import {theme} from "../../../default-styles";
 import {PriceRangeWrapper} from "./styles";
-import {InputsWrapper, Input} from "../input/input";
+import {InputsWrapper, Input, StyledInput} from "../input/input";
+import {useEffect} from "react";
 
 function valuetext(value) {
     return `${value}Kč`;
@@ -13,14 +14,22 @@ function valuetext(value) {
 const RangeSlider = ({ onPriceUpdate }) => {
     const [priceValue, setPriceValue] = React.useState([1200, 7600]);
 
-    const onPriceChange = (priceValue) => {
+    useEffect(() => {
         onPriceUpdate(priceValue)
-    }
+    }, [priceValue])
 
     const handleChange = (event) => {
-        setPriceValue(event.target.value);
-        onPriceChange(event.target.value);
+        setPriceValue(event);
     }
+
+    const handleChangeInputMin = (event) => {
+        setPriceValue([event, priceValue[1]]);
+    }
+
+    const handleChangeInputMax = (event) => {
+        setPriceValue([priceValue[0], event]);
+    }
+
 
     return (
         <PriceRangeWrapper>
@@ -44,19 +53,27 @@ const RangeSlider = ({ onPriceUpdate }) => {
                         color="secondary"
                         valueLabelDisplay="auto"
                         getAriaValueText={valuetext}
-                        onChange={handleChange}
+                        onChange={(evt)=> {handleChange(evt.target.value)}}
+                        sx={{
+                            marginBottom: 2,
+                        }}
                     />
                     <InputsWrapper>
-                        <Input
-                            type="number"
-                            value={priceValue[0]}
-                            onChange={handleChange}
-                        />
-                        <Input
-                            type="number"
-                            value={priceValue[1]}
-                            onChange={handleChange}
-                        />
+                        <StyledInput content={'Kč'}>
+                            <Input
+                                type="number"
+                                multiple={true}
+                                value={priceValue[0]}
+                                onChange={(evt)=> {handleChangeInputMin(evt.target.value)}}
+                            />
+                        </StyledInput>
+                        <StyledInput>
+                            <Input
+                                type="number"
+                                value={priceValue[1]}
+                                onChange={(evt)=> {handleChangeInputMax(evt.target.value)}}
+                            />
+                        </StyledInput>
                     </InputsWrapper>
                 </Box>
             </ThemeProvider>

@@ -10,6 +10,7 @@ export const TextSize = {
 const TextSizeValue = {
     [TextSize.BIG]: {
         fontSize: "24px",
+        fontSizeResponsive: "22px",
         lineHeight: "100%"
     },
     [TextSize.MEDIUM]: {
@@ -36,6 +37,10 @@ export const Text = styled.p`
     return css`
       font-size: ${values.fontSize};
       line-height: ${values.lineHeight};
+      
+      @media(min-width: 768px) and (max-width: 1240px) {
+        font-size: ${values.fontSizeResponsive};
+      }
     `;
   }};
 `;
@@ -46,6 +51,7 @@ export const GreyTextRegular = styled(Text)`
 
 export const TextAccent = styled(Text)`
   color: var(--color-orange);
+  text-transform: uppercase;
 `;
 
 export const TextBoldHeading = styled(Text)`

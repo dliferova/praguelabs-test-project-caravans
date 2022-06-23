@@ -3,7 +3,7 @@ import styled from "styled-components";
 import {createTheme} from '@mui/material/styles';
 
 export const PageWrapper = styled.section`
-  width: 86%;
+  width: 94%;
   max-width: 1240px;
   margin: 0 auto;
   padding: 0 10px;
