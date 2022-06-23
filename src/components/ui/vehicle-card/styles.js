@@ -19,6 +19,11 @@ export const ProductCardStyled = styled.article`
   justify-content: flex-start;
 `;
 
+export const ProductCardImgWrap = styled.div`
+  border-radius: 5px; 
+  overflow: hidden;
+`;
+
 export const ProductCardInfoWrap = styled.div`
   padding: 0 7% 10px;
   display: flex;

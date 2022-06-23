@@ -45,3 +45,20 @@ input::-webkit-inner-spin-button {
 input[type=number] {
   -moz-appearance: textfield;
 }
+
+/* Libraries defaults change */
+
+/* Swiper arrows */
+.swiper-button-next,
+.swiper-button-prev {
+  color: var(--color-beige) !important;
+}
+
+/* UI materials img */
+.card-img {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  background-color: var(--color-light-grey) !important;
+  height: auto;
+}

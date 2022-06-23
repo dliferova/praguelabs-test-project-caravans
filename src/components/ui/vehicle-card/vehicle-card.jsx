@@ -1,8 +1,9 @@
-import React, {memo} from 'react';
-import {filters} from "../../../const";
+import React from 'react';
+import { filters } from "../../../const";
 import {
     ProductCardWrapper,
     ProductCardStyled,
+    ProductCardImgWrap,
     ProductCardInfoWrap,
     ProductCardContentContainer,
     Counter,
@@ -11,39 +12,54 @@ import {
     GroupItem,
     PriceInfo,
 } from "./styles";
-import {
-    Text,
-    TextSize,
-    TextBoldHeading,
-    GreyTextRegular,
-    TextAccent,
-    TextWithIcon
-} from "../text/text";
+import {Text, TextSize, TextBoldHeading, GreyTextRegular, TextAccent, TextWithIcon} from "../text/text";
 import Image from 'next/image';
+import { Navigation } from 'swiper';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import 'swiper/css/scrollbar';
+import {Box} from "@mui/material";
 
 const VehicleCard = ({ vehicle }) => {
 
-    const formattedVehicleTypeF = (filters, product) => {
-        return filters
-            .filter(filter => filter.id === product.vehicleType)[0].type
+    const formattedVehicle = (filters, product) => {
+        return filters.find(filter => filter.id === product.vehicleType).type
     }
 
-    const formattedVehicleType = formattedVehicleTypeF(filters, vehicle)
-
+    const formattedVehicleType = formattedVehicle(filters, vehicle);
 
     return (
         <ProductCardWrapper>
             <ProductCardStyled>
-                <div style={{borderRadius: '5px', overflow: 'hidden'}}>
-                    <Image
-                        src={vehicle.pictures[0]}
-                        alt={vehicle.name}
-                        width="390"
-                        height="193"
-                        objectFit="cover"
-                        quality="75"
-                    />
-                </div>
+                <ProductCardImgWrap>
+                    <Swiper
+                        modules={[Navigation]}
+                        navigation={true}
+                        slidesPerView={1}
+                    >
+                        {
+                            vehicle.pictures
+                                .map((item, index) =>
+                                    <SwiperSlide
+                                        key={vehicle.name + 'image_' + index}
+                                    >
+                                        <Image
+                                            className="card-img"
+                                            src={item}
+                                            alt={vehicle.name}
+                                            width="390"
+                                            height="193"
+                                            objectFit="cover"
+                                            quality="75"
+                                        />
+                                    </SwiperSlide>
+                                )
+                        }
+                    </Swiper>
+
+                </ProductCardImgWrap>
                 <ProductCardInfoWrap>
                     <ProductCardContentContainer>
                         <div>
