@@ -15,7 +15,7 @@ export const Input = styled.input`
   color: var(--color-dark-blue);
   padding: 13px 12px;
   cursor: pointer;
-  max-width: 156px;
+  width: 156px;
   
   &:last-of-type {
     margin: 0;

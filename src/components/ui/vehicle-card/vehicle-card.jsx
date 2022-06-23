@@ -50,10 +50,10 @@ const VehicleCard = ({vehicle}) => {
                 </ProductCardImgWrap>
                 <ProductCardInfoWrap>
                     <ProductCardContentContainer>
-                        <div>
                             <TextAccent
+                                fontWeight={'bold'}
                                 size={TextSize.EXTRA_SMALL}
-                                marginBottom={'10px'}
+                                marginBottom={'5px'}
                             >{formattedVehicleType}
                             </TextAccent>
                             <TextBoldHeading
@@ -62,7 +62,6 @@ const VehicleCard = ({vehicle}) => {
                                 fontWeight={'bold'}
                             >{vehicle.name}
                             </TextBoldHeading>
-                        </div>
                     </ProductCardContentContainer>
                     <ProductCardContentContainer>
                         <div className="product-card__conveniences">

@@ -57,8 +57,7 @@ const SelectInput = ({ onSelectUpdate }) => {
                             }
                         }}
                     >
-                        <MenuItem
-                            value={true}>Ano</MenuItem>
+                        <MenuItem value={true}>Ano</MenuItem>
                         <MenuItem value={false}>Ne</MenuItem>
                     </Select>
                 </FormControl>

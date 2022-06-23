@@ -25,18 +25,23 @@ export const ProductCardImgWrap = styled.div`
 `;
 
 export const ProductCardInfoWrap = styled.div`
-  padding: 0 7% 10px;
+  padding: 12px 16px 0;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
 `;
 
 export const ProductCardContentContainer = styled.div`
-  border-bottom: 1px solid #EDEAE3;
-  padding: 10px 0;
+  border-bottom: 1px solid var(--color-beige);
+  padding: 0;
+  min-height: 67px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   
   &:last-of-type {
     border: none;
+    min-height: 50px;
   }
 `;
 
