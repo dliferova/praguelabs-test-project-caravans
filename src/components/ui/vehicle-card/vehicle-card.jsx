@@ -29,7 +29,7 @@ const VehicleCard = ({vehicle}) => {
         <ProductCardWrapper>
             <ProductCardStyled>
                 <ProductCardImgWrap>
-                    <Carousel showArrows={true}>
+                    <Carousel showThumbs={false} showArrows={true}>
                         {
                             vehicle.pictures
                                 .map((item, index) =>

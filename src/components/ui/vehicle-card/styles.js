@@ -59,7 +59,7 @@ export const GroupItem = styled.div`
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  margin: 0 6% 0 0;
+  margin: 0 4% 0 0;
 `;
 
 export const Counter = styled.span`
